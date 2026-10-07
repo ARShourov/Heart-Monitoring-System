@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function runCommand(cmd) {
+            const output = document.getElementById('output');
+            output.textContent = "Running " + cmd + "...";
+
+            fetch(`/run/${encodeURIComponent(cmd)}`)
+                .then(res => res.text())
+                .then(txt => output.textContent = txt)
+                .catch(err => output.textContent = "Error: " + err);
+        }
+    </script>
+</head>
+<body>
+	<div class="nav">
+	    <h2>Heart Monitor Dashboard</h2>
+	    {% if email %}
+		<span style="margin-right: 20px;">Logged in as: {{ email }}</span>
+	    {% endif %}
+	    <a href="/logout">Logout</a>
+	</div>
+
+    <div class="menu">
+        <button onclick="runCommand('enroll')">Enroll Fingerprint</button>
+        <button onclick="runCommand('verify')">Verify & ECG</button>
+        <button onclick="runCommand('delete')">Delete Fingerprint</button>
+        <button onclick="runCommand('pulse')">Pulse Check</button>
+    </div>
+
+    <pre id="output"></pre>
+</body>
+</html>
+
+
+
+
+................................
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | Heart System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="login-box">
+        <h2>Login</h2>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+	<form method="POST">
+	    <input type="email" name="email" placeholder="Email" required><br>
+	    <input type="password" name="password" placeholder="Password" required><br>
+	    <button type="submit">Login</button>
+	    <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a></p>
+	</form>
+    </div>
+</body>
+</html>
+
+
+...................
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Sign Up</button>
+        </form>
+

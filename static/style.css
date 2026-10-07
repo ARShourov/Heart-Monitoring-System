@@ -1,0 +1,181 @@
+/* General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f9fc;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #ff6a6a, #ffb347);
+    padding: 15px 30px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.navbar .user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.logout-btn {
+    background: white;
+    color: #ff6a6a;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.logout-btn:hover {
+    background: #ffe6e6;
+}
+
+/* Dashboard Cards */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 40px 60px;
+}
+.card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+.card i {
+    color: #ff6a6a;
+    margin-bottom: 15px;
+}
+.card h3 {
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Status Box */
+.status-box {
+    margin: 20px 60px;
+    padding: 20px;
+    background: #fff3f3;
+    border-left: 5px solid #ff6a6a;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #333;
+    min-height: 40px;
+}
+
+/* ===== Auth Pages ===== */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff6a6a, #ffb347);
+}
+
+.auth-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    width: 350px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.auth-card h2 {
+    margin-bottom: 25px;
+    color: #ff6a6a;
+}
+
+/* Make inputs same height & width as button */
+.auth-card input {
+    width: 100%;
+    padding: 12px 0;      /* match button height */
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    text-align: center;    /* optional, centers text */
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+.auth-card input:focus {
+    border-color: #ff6a6a;
+    outline: none;
+}
+
+/* Login/Signup Button */
+.auth-card button {
+    width: 100%;
+    padding: 12px 0;      /* same as input height */
+    margin-top: 10px;
+    background: #ff6a6a;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-card button:hover {
+    background: #ff4757;
+}
+
+.auth-card .error {
+    color: #ff4d4d;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.auth-card .switch-auth {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.auth-card .switch-auth a {
+    color: #ff6a6a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-card .switch-auth a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0; transform: translateY(-20px);}
+    100% {opacity:1; transform: translateY(0);}
+}
+
+
+
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        padding: 20px 30px;
+    }
+    .status-box {
+        margin: 20px 30px;
+    }
+}

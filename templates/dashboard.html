@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Heart Monitor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        function runCommand(cmd) {
+            const output = document.getElementById('output');
+            output.textContent = "Running " + cmd + "...";
+
+            fetch(`/run/${encodeURIComponent(cmd)}`)
+                .then(res => res.text())
+                .then(txt => output.textContent = txt)
+                .catch(err => output.textContent = "Error: " + err);
+        }
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">💓 Heart Monitor</div>
+        <div class="user-info">
+            <span>{{ user_email }}</span>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Dashboard Cards -->
+    <div class="dashboard-container">
+        <div class="card" onclick="runCommand('enroll')">
+            <i class="fas fa-fingerprint fa-3x"></i>
+            <h3>Enroll Fingerprint</h3>
+        </div>
+        <div class="card" onclick="runCommand('verify')">
+            <i class="fas fa-heartbeat fa-3x"></i>
+            <h3>Verify & ECG</h3>
+        </div>
+        <div class="card" onclick="runCommand('pulse')">
+            <i class="fas fa-tachometer-alt fa-3x"></i>
+            <h3>Pulse Check</h3>
+        </div>
+        <div class="card" onclick="runCommand('delete')">
+            <i class="fas fa-trash-alt fa-3x"></i>
+            <h3>Delete Fingerprint</h3>
+        </div>
+    </div>
+
+    <!-- Status Box -->
+    <div id="output" class="status-box">
+        System output will appear here...
+    </div>
+</body>
+</html>
